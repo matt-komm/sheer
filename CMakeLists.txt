@@ -7,6 +7,11 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 include_directories(${PROJECT_SOURCE_DIR}/external/cereal/include)
 
+add_library(sheer
+    src/Float16Converter.cpp
+    src/ShortString.cpp
+)
+
 add_subdirectory(tests)
 add_subdirectory(external)
 
