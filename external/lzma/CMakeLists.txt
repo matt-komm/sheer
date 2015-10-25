@@ -1,0 +1,50 @@
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+add_definitions("-D_7ZIP_ST")
+
+add_library(lzma
+    7zAlloc.c
+    7zAlloc.h
+    7zBuf2.c
+    7zBuf.c
+    7zCrc.c
+    7zCrc.h
+    7zCrcOpt.c
+    7zDec.c
+    7zFile.c
+    7zIn.c
+    7zStream.c
+    Alloc.c
+    Alloc.h
+    Bcj2.c
+    Bcj2.h
+    Bra86.c
+    Bra.c
+    BraIA64.c
+    CpuArch.c
+    CpuArch.h
+    Delta.c
+    LzFind.c
+    Lzma2Dec.c
+    Lzma2Dec.h
+    Lzma2Enc.c
+    Lzma2Enc.h
+    Lzma86Dec.c
+    Lzma86Enc.c
+    LzmaDec.c
+    LzmaDec.h
+    LzmaEnc.c
+    LzmaEnc.h
+    LzmaLib.c
+    Ppmd7.c
+    Ppmd7Dec.c
+    Ppmd7Enc.c
+    Sha256.c
+    Xz.c
+    XzCrc64.c
+    XzCrc64.h
+    XzDec.c
+    XzEnc.c
+    XzEnc.h
+    XzIn.c
+)
