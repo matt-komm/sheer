@@ -12,10 +12,10 @@
 int main()
 {
     sheer::Event event;
-    sheer::Particle p1(new sheer::LorentzVectorF16());
-    sheer::Particle p2(new sheer::LorentzVectorF32());
-    sheer::Particle p3(new sheer::LorentzVectorF64());
-    sheer::ShortString str("0test dsdgdfgasdf qe 30 __---klJBKBHNL*^(&*078");
+    sheer::Particle<sheer::LorentzVectorF16> p1;
+    sheer::Particle<sheer::LorentzVectorF32> p2;
+    sheer::Particle<sheer::LorentzVectorF64> p3;
+    sheer::ShortString str("0test");
     //std::unique_ptr<sheer::LorentzVector> p1(new sheer::LorentzVectorF32());
     
     std::stringstream ss;

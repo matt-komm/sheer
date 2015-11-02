@@ -13,13 +13,14 @@
 namespace sheer
 {
 
+template<class LORENTZVECTOR>
 class Particle
 {
     protected:
-        std::unique_ptr<LorentzVector> _lorentzVector;
+        std::unique_ptr<LORENTZVECTOR> _lorentzVector;
     public:
-        Particle(LorentzVector* lorentzVector=nullptr):
-            _lorentzVector(std::move(lorentzVector))
+        Particle():
+            _lorentzVector(new LORENTZVECTOR())
         {
         }
         
