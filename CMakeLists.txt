@@ -21,6 +21,7 @@ endmacro(copy_file_if_changed)
 add_library(sheer
     src/Float16Converter.cpp
     src/ShortString.cpp
+    src/Hash.cpp
 )
 
 add_subdirectory(tests)

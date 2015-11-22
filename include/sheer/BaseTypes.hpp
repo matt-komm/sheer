@@ -2,6 +2,7 @@
 #define __SHEER_BASETYPES_H__
 
 #include <cstdint>
+#include <cstddef>
 
 namespace sheer
 {

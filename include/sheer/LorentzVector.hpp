@@ -2,6 +2,7 @@
 #define __SHEER_LORENTZVECTOR_H__
 
 #include "sheer/Float16Converter.hpp"
+#include "sheer/Float16.hpp"
 
 #include "cereal/cereal.hpp"
 #include "cereal/types/polymorphic.hpp"
@@ -92,77 +93,15 @@ class LorentzVectorTmpl:
         }
 };
 
+typedef LorentzVectorTmpl<float16> LorentzVectorF16;
 typedef LorentzVectorTmpl<float32> LorentzVectorF32;
 typedef LorentzVectorTmpl<float64> LorentzVectorF64;
 
-
-class LorentzVectorF16:
-    public LorentzVector
-{
-    protected:
-        uint16 _mass;
-        uint16 _px;
-        uint16 _py;
-        uint16 _pz;
-    public:
-        LorentzVectorF16(
-            const float& mass=0,
-            const float& px=0,
-            const float& py=0,
-            const float& pz=0
-        ):
-            _mass(Float16Converter::float32to16(mass)),
-            _px(Float16Converter::float32to16(px)),
-            _py(Float16Converter::float32to16(py)),
-            _pz(Float16Converter::float32to16(pz))
-        {
-        }
-        
-        virtual double energy() const
-        {
-            const float mass = Float16Converter::float16to32(_mass);
-            const float px = Float16Converter::float16to32(_px);
-            const float py = Float16Converter::float16to32(_py);
-            const float pz = Float16Converter::float16to32(_pz);
-            return sqrt(mass*mass+px*px+py*py+pz*pz);
-        }
-    
-        virtual double mass() const
-        {
-            return Float16Converter::float16to32(_mass);
-        }
-    
-        virtual double px() const
-        {
-            return Float16Converter::float16to32(_px);
-        }
-        
-        virtual double py() const
-        {
-            return Float16Converter::float16to32(_py);
-        }
-        
-        virtual double pz() const
-        {
-            return Float16Converter::float16to32(_pz);
-        }
-        
-        template<class Archive>
-        void serialize(Archive& archive)
-        {
-            archive(
-                cereal::make_nvp("mass",_mass),
-                cereal::make_nvp("px",_px),
-                cereal::make_nvp("py",_py),
-                cereal::make_nvp("pz",_pz)
-            );
-        }
-};
-
 }
-CEREAL_REGISTER_TYPE(sheer::LorentzVectorF16);
-CEREAL_REGISTER_TYPE(sheer::LorentzVectorF32);
-CEREAL_REGISTER_TYPE(sheer::LorentzVectorF64);
+
+CEREAL_REGISTER_TYPE(sheer::LorentzVectorF16)
+CEREAL_REGISTER_TYPE(sheer::LorentzVectorF32)
+CEREAL_REGISTER_TYPE(sheer::LorentzVectorF64)
 
 #endif
 

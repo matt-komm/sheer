@@ -1,7 +1,10 @@
 #ifndef __SHEER_EVENT_H__
 #define __SHEER_EVENT_H__
 
-#include <cereal/cereal.hpp>
+#include "cereal/cereal.hpp"
+#include "cereal/types/polymorphic.hpp"
+
+#include "sheer/HepObject.hpp"
 
 #include <vector>
 #include <map>
@@ -9,13 +12,16 @@
 namespace sheer
 {
 
-class Event
+class Event:
+    public HepObject
 {
     protected:
         uint32 run;
         uint32 lumi;
         uint32 number;
     public:
+        //DEFINE_TYPE(Event,1)
+    
         Event():
             run(0),
             lumi(0),
@@ -23,20 +29,10 @@ class Event
         {
         }
         
-        
         template<class Archive>
-        void load(Archive& archive)
+        void serialize(Archive& archive)
         {
-            archive(
-                run,
-                lumi,
-                number
-            );
-        }
-
-        template<class Archive>
-        void save(Archive& archive) const
-        {
+            //HepObject::serialize(archive);
             archive(
                 run,
                 lumi,
@@ -46,6 +42,8 @@ class Event
 };
 
 }
+
+CEREAL_REGISTER_TYPE(sheer::Event)
 
 #endif
 

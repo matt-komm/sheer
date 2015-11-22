@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
 #avail = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_"
-avail = "abcdefghijklmnopqrstuvwxyz_"
+avail = "abcdefghijklmnopqrstuvwxyz0123456789_-(). "
 
 print len(avail)
-
+'''
 reverseMap = [' ']
 
 index = 1
@@ -21,4 +21,5 @@ print "----------------"
 print
 
 for i,c in enumerate(reverseMap):
-    print str(ord(c))+",","//"+str(i)+" = "+str(c)
+    print str(ord(c))+",","//"+str(i)+" = "+str(c) 
+'''

@@ -3,7 +3,7 @@
 namespace sheer
 {
 
-const std::array<ShortString::SChar,128> ShortString::toSChar = {{
+const std::array<ShortString::SChar,128> ShortString::toSChar = {
     0, //0
     0, //1
     0, //2
@@ -132,10 +132,10 @@ const std::array<ShortString::SChar,128> ShortString::toSChar = {{
     0, //125
     0, //126
     0, //127
-}};
+};
 
-const std::array<char,64> ShortString::toChar = {{
-    32, //0 =  
+const std::array<char,64> ShortString::toChar = {
+    32, //0
     48, //1 = 0
     49, //2 = 1
     50, //3 = 2
@@ -199,6 +199,6 @@ const std::array<char,64> ShortString::toChar = {{
     120, //61 = x
     121, //62 = y
     122, //63 = z
-}};
+};
 
 }
