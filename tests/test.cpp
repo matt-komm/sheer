@@ -14,9 +14,9 @@
 int main()
 {
     std::unique_ptr<sheer::HepObject> event(new sheer::Event());
-    sheer::Particle<sheer::LorentzVectorF16> p1;
-    sheer::Particle<sheer::LorentzVectorF32> p2;
-    sheer::Particle<sheer::LorentzVectorF64> p3;
+    sheer::Particle<sheer::float16> p1;
+    sheer::Particle<sheer::float32> p2;
+    sheer::Particle<sheer::float64> p3;
     sheer::ShortString str("sgm43k4osdvmsdkko3 ops");
     //std::unique_ptr<sheer::LorentzVector> p1(new sheer::LorentzVectorF32());
     
@@ -25,8 +25,8 @@ int main()
     std::stringstream ss;
     {
         cereal::XMLOutputArchive ar(ss);
-        //ar(cereal::make_nvp("Event",event));
-        ar(cereal::make_nvp("v",v));
+        ar(cereal::make_nvp("Event",event));
+        //ar(cereal::make_nvp("v",v));
         ar(cereal::make_nvp("Particle",p1));
         //ar(cereal::make_nvp("Particle",p2));
         //ar(cereal::make_nvp("Particle",p3));

@@ -18,65 +18,50 @@
 namespace sheer
 {
 
-class LorentzVector
-{
-    public:
-        virtual double energy() const = 0;
-    
-        virtual double mass() const = 0;
-    
-        virtual double px() const = 0;
-        
-        virtual double py() const = 0;
-        
-        virtual double pz() const = 0;
-};
-
 
 template<class TYPE>
-class LorentzVectorTmpl:
-    public LorentzVector
+class LorentzVector
 {
     protected:
-        TYPE _mass;
         TYPE _px;
         TYPE _py;
         TYPE _pz;
+        TYPE _mass;
     public:
-        LorentzVectorTmpl(
-            const TYPE& mass=0,
+        LorentzVector(
             const TYPE& px=0,
             const TYPE& py=0,
-            const TYPE& pz=0
+            const TYPE& pz=0,
+            const TYPE& mass=0
         ):
-            _mass(mass),
             _px(px),
             _py(py),
-            _pz(pz)
+            _pz(pz),
+            _mass(mass)
         {
         }
         
-        virtual double energy() const
+        virtual TYPE energy() const
         {
             return sqrt(_mass*_mass+_px*_px+_py*_py+_pz*_pz);
         }
     
-        virtual double mass() const
+        virtual TYPE mass() const
         {
             return _mass;
         }
     
-        virtual double px() const
+        virtual TYPE px() const
         {
             return _px;
         }
         
-        virtual double py() const
+        virtual TYPE py() const
         {
             return _py;
         }
         
-        virtual double pz() const
+        virtual TYPE pz() const
         {
             return _pz;
         }
@@ -85,23 +70,20 @@ class LorentzVectorTmpl:
         void serialize(Archive& archive)
         {
             archive(
-                cereal::make_nvp("mass",_mass),
                 cereal::make_nvp("px",_px),
                 cereal::make_nvp("py",_py),
-                cereal::make_nvp("pz",_pz)
+                cereal::make_nvp("pz",_pz),
+                cereal::make_nvp("mass",_mass)
             );
         }
 };
 
-typedef LorentzVectorTmpl<float16> LorentzVectorF16;
-typedef LorentzVectorTmpl<float32> LorentzVectorF32;
-typedef LorentzVectorTmpl<float64> LorentzVectorF64;
+typedef LorentzVector<float16> LorentzVectorF16;
+typedef LorentzVector<float32> LorentzVectorF32;
+typedef LorentzVector<float64> LorentzVectorF64;
 
 }
 
-CEREAL_REGISTER_TYPE(sheer::LorentzVectorF16)
-CEREAL_REGISTER_TYPE(sheer::LorentzVectorF32)
-CEREAL_REGISTER_TYPE(sheer::LorentzVectorF64)
 
 #endif
 

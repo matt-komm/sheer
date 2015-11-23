@@ -20,9 +20,10 @@ class Event:
         uint32 lumi;
         uint32 number;
     public:
-        //DEFINE_TYPE(Event,1)
+        DEFINE_TYPE(Event,1)
     
         Event():
+            HepObject(),
             run(0),
             lumi(0),
             number(0)
@@ -32,7 +33,7 @@ class Event:
         template<class Archive>
         void serialize(Archive& archive)
         {
-            //HepObject::serialize(archive);
+            HepObject::serialize(archive);
             archive(
                 run,
                 lumi,

@@ -13,7 +13,6 @@ namespace sheer
 class HepObject
 {
     public:
-        /*
         virtual uint8 getType() const = 0;
         virtual uint8 getVersion() const = 0;
         
@@ -25,7 +24,7 @@ class HepObject
                 cereal::make_nvp("version",getVersion())
             );
         }
-        */
+        
         virtual ~HepObject()
         {
         }
@@ -36,6 +35,7 @@ class HepObject
 #define DEFINE_TYPE(NAME, VERSION) \
     virtual uint8 getType() const {return sheer::Hash::get(#NAME);} \
     virtual uint8 getVersion() const {return VERSION;} 
+    
 
 #endif
 
